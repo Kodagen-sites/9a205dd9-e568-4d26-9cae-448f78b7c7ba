@@ -59,9 +59,9 @@ export default function ScrubHero() {
         progress={progress}
         chapters={chapters as never}
         position="bottom-left"
-        textColor="#2563eb"
-        accentColor="#1d4ed8"
-        accentTextColor="var(--bg-color)"
+        textColor="#000000"
+        accentColor="#000000"
+        accentTextColor="#ffffff"
         showChapterDots
       />
     </ScrollCanvas>
@@ -101,12 +101,7 @@ function PosterHero({
           className="font-display leading-[0.92] tracking-tight"
           style={{
             fontSize: "clamp(3.75rem, 10.75vw, 8.5rem)",
-            backgroundImage:
-              "linear-gradient(135deg, #3b82f6 0%, #1d4ed8 55%, #2563eb 100%)",
-            WebkitBackgroundClip: "text",
-            backgroundClip: "text",
-            color: "transparent",
-            WebkitTextFillColor: "transparent",
+            color: "#000000",
           }}
         >
           {chapter.headlineLines.map((l, i) => (
@@ -130,7 +125,7 @@ function PosterHero({
         {chapter.cta && (
           <a
             href={chapter.cta.href}
-            className="mt-8 inline-flex items-center gap-2 rounded-full px-7 py-3 text-sm font-mono uppercase tracking-[0.18em] bg-contrast text-bg w-fit hover:brightness-110 transition-all"
+            className="mt-8 inline-flex items-center gap-2 rounded-full px-7 py-3 text-sm font-mono uppercase tracking-[0.18em] bg-black text-white w-fit hover:brightness-110 transition-all"
           >
             {chapter.cta.label} →
           </a>
