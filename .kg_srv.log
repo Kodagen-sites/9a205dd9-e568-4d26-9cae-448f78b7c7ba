@@ -1,0 +1,8 @@
+
+> flowsync@0.1.0 start
+> next start -p 3998
+
+▲ Next.js 16.2.6
+- Local:         http://localhost:3998
+- Network:       http://172.19.8.18:3998
+✓ Ready in 122ms

@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Pearl & Platinum (locked) — light theme */
+  --bg-color: #FBFBFA;
+  --surface-color: #EAEAEA;
+  --accent-color: #9CA0A8;
+  --contrast-color: #3A3D45;
+
+  /* 4-tone bg ladder for section alternation (rule 33.1) */
+  --bg-primary: #FBFBFA;
+  --bg-secondary: #F4F4F2;
+  --bg-tertiary: #EAEAEA;
+  --bg-accent: #3A3D45;
+
+  /* Text */
+  --text-primary: #1B1D22;
+  --text-muted: #5B6068;
+  --text-eyebrow: #3A3D45;
+  --text-on-dark: #FBFBFA;
+
+  /* Lines + hairlines */
+  --hairline: rgba(58, 61, 69, 0.10);
+  --hairline-strong: rgba(58, 61, 69, 0.18);
+
+  /* Card overlays for scrub canvas */
+  --card-overlay: rgba(251, 251, 250, 0.78);
+
+  /* Fonts (injected by next/font in layout.tsx) */
+  --fg-color: var(--text-primary);
+}
+
+@layer base {
+  html, body {
+    background: var(--bg-color);
+    color: var(--text-primary);
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    font-family: var(--font-body), system-ui, sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display), system-ui, sans-serif;
+    letter-spacing: -0.01em;
+  }
+  ::selection {
+    background: var(--contrast-color);
+    color: var(--text-on-dark);
+  }
+}
+
+@layer components {
+  .section-pad {
+    padding-block: clamp(48px, 6vw, 96px);
+  }
+  .container-x {
+    padding-inline: clamp(20px, 4vw, 56px);
+  }
+  .eyebrow {
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.34em;
+    color: var(--text-eyebrow);
+    opacity: 0.7;
+  }
+  .hairline-divider {
+    height: 1px;
+    width: 100%;
+    background: var(--hairline);
+  }
+  .display-1 {
+    font-size: clamp(48px, 9vw, 140px);
+    line-height: 0.92;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+  }
+  .display-2 {
+    font-size: clamp(36px, 6vw, 88px);
+    line-height: 0.98;
+    font-weight: 300;
+    letter-spacing: -0.015em;
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .grain-overlay {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    opacity: 0.06;
+    mix-blend-mode: multiply;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
