@@ -59,8 +59,8 @@ export default function ScrubHero() {
         progress={progress}
         chapters={chapters as never}
         position="bottom-left"
-        textColor="var(--text-primary)"
-        accentColor="var(--contrast-color)"
+        textColor="#2563eb"
+        accentColor="#1d4ed8"
         accentTextColor="var(--bg-color)"
         showChapterDots
       />
@@ -98,8 +98,16 @@ function PosterHero({
           </span>
         )}
         <h1
-          className="font-display text-ink leading-[0.92] tracking-tight"
-          style={{ fontSize: "clamp(2.75rem, 8vw, 6.5rem)" }}
+          className="font-display leading-[0.92] tracking-tight"
+          style={{
+            fontSize: "clamp(3.75rem, 10.75vw, 8.5rem)",
+            backgroundImage:
+              "linear-gradient(135deg, #3b82f6 0%, #1d4ed8 55%, #2563eb 100%)",
+            WebkitBackgroundClip: "text",
+            backgroundClip: "text",
+            color: "transparent",
+            WebkitTextFillColor: "transparent",
+          }}
         >
           {chapter.headlineLines.map((l, i) => (
             <span
@@ -115,7 +123,7 @@ function PosterHero({
           ))}
         </h1>
         {chapter.subline && (
-          <p className="mt-6 max-w-xl text-base md:text-lg text-muted">
+          <p className="mt-6 max-w-xl text-base md:text-lg text-black">
             {chapter.subline}
           </p>
         )}

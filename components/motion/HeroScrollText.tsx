@@ -68,7 +68,16 @@ export default function HeroScrollText({
               </motion.span>
             )}
 
-            <h1 className="mt-6 font-display" style={{ color: textColor }}>
+            <h1
+              className="mt-6 font-display"
+              style={{
+                backgroundImage: `linear-gradient(135deg, ${textColor} 0%, ${accentColor} 55%, ${textColor} 100%)`,
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+                color: "transparent",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
               {chapter.headlineLines.map((line, i) => (
                 <motion.span
                   key={i}
@@ -95,7 +104,7 @@ export default function HeroScrollText({
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1, transition: { duration: 0.8, delay: 0.42 } }}
                 className="mt-6 max-w-xl text-lg md:text-xl"
-                style={{ color: `color-mix(in srgb, ${textColor} 70%, transparent)` }}
+                style={{ color: "#000" }}
               >
                 {chapter.subline}
               </motion.p>
