@@ -3,6 +3,8 @@ import Link from "next/link";
 import ScrubHero from "@/components/sections/ScrubHero";
 import WaitlistForm from "@/components/sections/WaitlistForm";
 import ServiceCard from "@/components/ServiceCard";
+import ScrollCanvas from "@/components/ScrollCanvas";
+import framesManifest from "@/content/frames-manifest.json";
 import { siteConfig } from "@/content/site-config";
 import {
   FadeUp,
@@ -95,57 +97,110 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5 — IMAGE MOCKUP / SHOWCASE */}
-      <section className="relative section-pad container-x bg-bg">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <FadeUp>
-              <div className="eyebrow mb-4">Built like an engineer</div>
-            </FadeUp>
-            <FadeUp delay={0.1}>
-              <h2 className="font-display text-ink display-2 text-balance mb-6">
-                A runtime, not a chatbot.
-              </h2>
-            </FadeUp>
-            <FadeUp delay={0.2}>
-              <p className="text-muted text-lg leading-relaxed">
-                Most agent frameworks treat every run like a fresh conversation.
-                FlowSync treats them like jobs — durable state, idempotent steps,
-                deterministic replay, version-controlled prompts. The kind of
-                primitives you'd want before pointing AI at anything that matters.
-              </p>
-            </FadeUp>
-            <StaggerChildren
-              staggerDelay={0.08}
-              initialDelay={0.3}
-              className="mt-8 space-y-3"
-            >
-              {[
-                { title: "Durable state per workflow", description: "Steps survive restarts, timeouts, and partial failures." },
-                { title: "Idempotent tool calls", description: "Same input, same output. Replay any run safely." },
-                { title: "Versioned prompts + adapters", description: "Promote, roll back, A/B test — git-tracked." },
-              ].map((f) => (
-                <div key={f.title} className="flex items-start gap-3">
-                  <span className="mt-2 inline-block w-1.5 h-1.5 rounded-full bg-contrast flex-shrink-0" />
-                  <div>
-                    <div className="font-display font-medium text-ink">{f.title}</div>
-                    <div className="text-muted text-sm mt-0.5">{f.description}</div>
+      {/* 5 — IMAGE MOCKUP / SHOWCASE — scroll-scrubbed hero frames */}
+      {framesManifest.frameCount ? (
+        <ScrollCanvas
+          frameCount={framesManifest.frameCount}
+          pattern={framesManifest.frameUrlTemplate || `${framesManifest.frameDir || "/frames"}/frame-{NNNN}.jpg`}
+          padLength={4}
+          scrollDistance={3}
+          loadingLabel={siteConfig.company.name}
+          loadingVariant="L1"
+        >
+          <div className="pointer-events-auto absolute inset-0 flex items-end">
+            <div className="container-x w-full pb-16 md:pb-24">
+              <div className="max-w-2xl rounded-2xl bg-bg/75 backdrop-blur-md border border-hairline-strong p-8 md:p-10">
+                <FadeUp>
+                  <div className="eyebrow mb-4">Built like an engineer</div>
+                </FadeUp>
+                <FadeUp delay={0.1}>
+                  <h2 className="font-display text-ink display-2 text-balance mb-6">
+                    A runtime, not a chatbot.
+                  </h2>
+                </FadeUp>
+                <FadeUp delay={0.2}>
+                  <p className="text-muted text-lg leading-relaxed">
+                    Most agent frameworks treat every run like a fresh conversation.
+                    FlowSync treats them like jobs — durable state, idempotent steps,
+                    deterministic replay, version-controlled prompts. The kind of
+                    primitives you'd want before pointing AI at anything that matters.
+                  </p>
+                </FadeUp>
+                <StaggerChildren
+                  staggerDelay={0.08}
+                  initialDelay={0.3}
+                  className="mt-8 space-y-3"
+                >
+                  {[
+                    { title: "Durable state per workflow", description: "Steps survive restarts, timeouts, and partial failures." },
+                    { title: "Idempotent tool calls", description: "Same input, same output. Replay any run safely." },
+                    { title: "Versioned prompts + adapters", description: "Promote, roll back, A/B test — git-tracked." },
+                  ].map((f) => (
+                    <div key={f.title} className="flex items-start gap-3">
+                      <span className="mt-2 inline-block w-1.5 h-1.5 rounded-full bg-contrast flex-shrink-0" />
+                      <div>
+                        <div className="font-display font-medium text-ink">{f.title}</div>
+                        <div className="text-muted text-sm mt-0.5">{f.description}</div>
+                      </div>
+                    </div>
+                  ))}
+                </StaggerChildren>
+              </div>
+            </div>
+          </div>
+        </ScrollCanvas>
+      ) : (
+        <section className="relative section-pad container-x bg-bg">
+          <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <FadeUp>
+                <div className="eyebrow mb-4">Built like an engineer</div>
+              </FadeUp>
+              <FadeUp delay={0.1}>
+                <h2 className="font-display text-ink display-2 text-balance mb-6">
+                  A runtime, not a chatbot.
+                </h2>
+              </FadeUp>
+              <FadeUp delay={0.2}>
+                <p className="text-muted text-lg leading-relaxed">
+                  Most agent frameworks treat every run like a fresh conversation.
+                  FlowSync treats them like jobs — durable state, idempotent steps,
+                  deterministic replay, version-controlled prompts. The kind of
+                  primitives you'd want before pointing AI at anything that matters.
+                </p>
+              </FadeUp>
+              <StaggerChildren
+                staggerDelay={0.08}
+                initialDelay={0.3}
+                className="mt-8 space-y-3"
+              >
+                {[
+                  { title: "Durable state per workflow", description: "Steps survive restarts, timeouts, and partial failures." },
+                  { title: "Idempotent tool calls", description: "Same input, same output. Replay any run safely." },
+                  { title: "Versioned prompts + adapters", description: "Promote, roll back, A/B test — git-tracked." },
+                ].map((f) => (
+                  <div key={f.title} className="flex items-start gap-3">
+                    <span className="mt-2 inline-block w-1.5 h-1.5 rounded-full bg-contrast flex-shrink-0" />
+                    <div>
+                      <div className="font-display font-medium text-ink">{f.title}</div>
+                      <div className="text-muted text-sm mt-0.5">{f.description}</div>
+                    </div>
                   </div>
-                </div>
-              ))}
-            </StaggerChildren>
-          </div>
+                ))}
+              </StaggerChildren>
+            </div>
 
-          <div className="relative">
-            <ImageRevealMask
-              src={images["section-about"] || ""}
-              alt="FlowSync workspace"
-              aspectClass="aspect-[4/3]"
-              className="rounded-2xl border border-hairline-strong bg-surface"
-            />
+            <div className="relative">
+              <ImageRevealMask
+                src={images["section-about"] || ""}
+                alt="FlowSync workspace"
+                aspectClass="aspect-[4/3]"
+                className="rounded-2xl border border-hairline-strong bg-surface"
+              />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* 6 — OVERSIZED TYPE STATEMENT */}
       <section className="relative section-pad container-x bg-surface">
