@@ -1,5 +1,18 @@
 {
-  "images": {},
+  "images": {
+    "scene-1-end": "https://zykgxmubadvmlxpkqrzd.supabase.co/storage/v1/object/public/site-assets/9a205dd9-e568-4d26-9cae-448f78b7c7ba/images/scene-1-end.png",
+    "scene-1-start": "https://zykgxmubadvmlxpkqrzd.supabase.co/storage/v1/object/public/site-assets/9a205dd9-e568-4d26-9cae-448f78b7c7ba/images/scene-1-start.png",
+    "section-about": "https://zykgxmubadvmlxpkqrzd.supabase.co/storage/v1/object/public/site-assets/9a205dd9-e568-4d26-9cae-448f78b7c7ba/images/section-about.png",
+    "section-cta": "https://zykgxmubadvmlxpkqrzd.supabase.co/storage/v1/object/public/site-assets/9a205dd9-e568-4d26-9cae-448f78b7c7ba/images/section-cta.png",
+    "section-og": "https://zykgxmubadvmlxpkqrzd.supabase.co/storage/v1/object/public/site-assets/9a205dd9-e568-4d26-9cae-448f78b7c7ba/images/section-og.png",
+    "section-process": "https://zykgxmubadvmlxpkqrzd.supabase.co/storage/v1/object/public/site-assets/9a205dd9-e568-4d26-9cae-448f78b7c7ba/images/section-process.png",
+    "service-agent-runtime": "https://zykgxmubadvmlxpkqrzd.supabase.co/storage/v1/object/public/site-assets/9a205dd9-e568-4d26-9cae-448f78b7c7ba/images/service-agent-runtime.png",
+    "service-connectors": "https://zykgxmubadvmlxpkqrzd.supabase.co/storage/v1/object/public/site-assets/9a205dd9-e568-4d26-9cae-448f78b7c7ba/images/service-connectors.png",
+    "service-evals": "https://zykgxmubadvmlxpkqrzd.supabase.co/storage/v1/object/public/site-assets/9a205dd9-e568-4d26-9cae-448f78b7c7ba/images/service-evals.png",
+    "service-guardrails": "https://zykgxmubadvmlxpkqrzd.supabase.co/storage/v1/object/public/site-assets/9a205dd9-e568-4d26-9cae-448f78b7c7ba/images/service-guardrails.png",
+    "service-observability": "https://zykgxmubadvmlxpkqrzd.supabase.co/storage/v1/object/public/site-assets/9a205dd9-e568-4d26-9cae-448f78b7c7ba/images/service-observability.png",
+    "service-studio": "https://zykgxmubadvmlxpkqrzd.supabase.co/storage/v1/object/public/site-assets/9a205dd9-e568-4d26-9cae-448f78b7c7ba/images/service-studio.png"
+  },
   "videos": {
     "final": "https://zykgxmubadvmlxpkqrzd.supabase.co/storage/v1/object/public/site-assets/9a205dd9-e568-4d26-9cae-448f78b7c7ba/videos/final.mp4",
     "scene-1": "https://zykgxmubadvmlxpkqrzd.supabase.co/storage/v1/object/public/site-assets/9a205dd9-e568-4d26-9cae-448f78b7c7ba/videos/scene-1.mp4"
