@@ -131,41 +131,36 @@ function SlidingCard({
   total: number;
   scrollYProgress: MotionValue<number>;
 }) {
-  const segment = 1 / total;
-  const center = (index + 0.5) / total;
-  const start = Math.max(0, center - segment);
-  const end = Math.min(1, center + segment);
+  const slotSize = 1 / total;
+  const slotStart = index * slotSize;
+  const slotEnd = (index + 1) * slotSize;
+  const enterEnd = slotStart + slotSize * 0.22;
+  const exitStart = slotEnd - slotSize * 0.22;
 
   const x = useTransform(
     scrollYProgress,
-    [start, center, end],
-    ["75%", "0%", "-65%"]
+    [slotStart, enterEnd, exitStart, slotEnd],
+    ["70%", "0%", "0%", "-70%"]
   );
   const scale = useTransform(
     scrollYProgress,
-    [start, center, end],
-    [0.82, 1, 0.78]
+    [slotStart, enterEnd, exitStart, slotEnd],
+    [0.88, 1, 1, 0.88]
   );
   const opacity = useTransform(
     scrollYProgress,
-    [start, center - segment * 0.1, center, center + segment * 0.1, end],
-    [0.35, 0.95, 1, 0.6, 0.25]
+    [slotStart, enterEnd, exitStart, slotEnd],
+    [0, 1, 1, 0]
   );
   const rotate = useTransform(
     scrollYProgress,
-    [start, center, end],
-    [4, 0, -4]
+    [slotStart, enterEnd, exitStart, slotEnd],
+    [3, 0, 0, -3]
   );
-  const blur = useTransform(
-    scrollYProgress,
-    [start, center, end],
-    ["6px", "0px", "4px"]
-  );
-  const filter = useTransform(blur, (b) => `blur(${b})`);
 
   return (
     <motion.div
-      style={{ x, scale, opacity, rotate, filter }}
+      style={{ x, scale, opacity, rotate }}
       className="absolute inset-0 flex items-center justify-center px-6 will-change-transform"
     >
       <div className="w-full max-w-xl rounded-2xl border border-hairline-strong bg-bg/85 backdrop-blur-xl p-8 md:p-10 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.45)]">
