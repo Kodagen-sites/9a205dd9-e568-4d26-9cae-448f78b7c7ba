@@ -137,30 +137,51 @@ function SlidingCard({
   const enterEnd = slotStart + slotSize * 0.22;
   const exitStart = slotEnd - slotSize * 0.22;
 
+  const isFirst = index === 0;
+  const isLast = index === total - 1;
+
+  // First card already centered at scroll start, last card stays centered at end.
+  // Otherwise incoming peeks on the right, outgoing peeks on the left.
+  const peekOpacity = 0.32;
+  const peekScale = 0.86;
+  const startX = isFirst ? "0%" : "78%";
+  const endX = isLast ? "0%" : "-78%";
+  const startOpacity = isFirst ? 1 : peekOpacity;
+  const endOpacity = isLast ? 1 : peekOpacity;
+  const startScale = isFirst ? 1 : peekScale;
+  const endScale = isLast ? 1 : peekScale;
+  const startRotate = isFirst ? 0 : 3;
+  const endRotate = isLast ? 0 : -3;
+
   const x = useTransform(
     scrollYProgress,
     [slotStart, enterEnd, exitStart, slotEnd],
-    ["70%", "0%", "0%", "-70%"]
+    [startX, "0%", "0%", endX]
   );
   const scale = useTransform(
     scrollYProgress,
     [slotStart, enterEnd, exitStart, slotEnd],
-    [0.88, 1, 1, 0.88]
+    [startScale, 1, 1, endScale]
   );
   const opacity = useTransform(
     scrollYProgress,
     [slotStart, enterEnd, exitStart, slotEnd],
-    [0, 1, 1, 0]
+    [startOpacity, 1, 1, endOpacity]
   );
   const rotate = useTransform(
     scrollYProgress,
     [slotStart, enterEnd, exitStart, slotEnd],
-    [3, 0, 0, -3]
+    [startRotate, 0, 0, endRotate]
+  );
+  const zIndex = useTransform(
+    scrollYProgress,
+    [slotStart, enterEnd, exitStart, slotEnd],
+    [1, 2, 2, 1]
   );
 
   return (
     <motion.div
-      style={{ x, scale, opacity, rotate }}
+      style={{ x, scale, opacity, rotate, zIndex }}
       className="absolute inset-0 flex items-center justify-center px-6 will-change-transform"
     >
       <div className="w-full max-w-xl rounded-2xl border border-hairline-strong bg-bg/85 backdrop-blur-xl p-8 md:p-10 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.45)]">
