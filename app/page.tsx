@@ -186,22 +186,6 @@ export default function HomePage() {
         </section>
       )}
 
-      {/* 6 — OVERSIZED TYPE STATEMENT */}
-      <section className="relative section-pad container-x bg-surface">
-        <div className="max-w-7xl mx-auto">
-          <FadeUp>
-            <div className="eyebrow mb-8">Manifesto</div>
-          </FadeUp>
-          <TextReveal
-            as="h2"
-            className="font-display font-light text-ink leading-[0.92] tracking-tighter text-[clamp(56px,14vw,220px)]"
-            stagger={0.04}
-          >
-            {siteConfig.themeStatement}
-          </TextReveal>
-        </div>
-      </section>
-
       {/* 7 — PROCESS / HOW IT WORKS */}
       <section id="process" className="relative section-pad container-x bg-bg">
         <div className="max-w-7xl mx-auto">
