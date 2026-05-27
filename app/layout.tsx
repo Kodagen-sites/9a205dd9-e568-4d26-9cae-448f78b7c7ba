@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { FilmGrain, Vignette, ScrollProgress } from "@/components/motion";
 import { siteConfig } from "@/content/site-config";
 import { buildMeta } from "@/lib/seo";
+import EditorBridge from "../components/__kodagen/EditorBridge";
 
 const display = Outfit({
   subsets: ["latin"],
@@ -44,6 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         <FilmGrain opacity={0.04} />
         <Vignette color="rgba(58,61,69,0.18)" />
+        <EditorBridge />
       </body>
     </html>
   );

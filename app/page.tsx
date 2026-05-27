@@ -4,6 +4,7 @@ import ScrubHero from "@/components/sections/ScrubHero";
 import WaitlistForm from "@/components/sections/WaitlistForm";
 import ServiceCard from "@/components/ServiceCard";
 import ScrollCanvas from "@/components/ScrollCanvas";
+import SlidingCards from "@/components/SlidingCards";
 import framesManifest from "@/content/frames-manifest.json";
 import { siteConfig } from "@/content/site-config";
 import {
@@ -63,39 +64,22 @@ export default function HomePage() {
         </Marquee>
       </section>
 
-      {/* 4 — SERVICES BENTO (CV7) */}
-      <section className="relative section-pad container-x bg-bg">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-14 max-w-3xl">
-            <FadeUp>
-              <div className="eyebrow mb-4">{siteConfig.servicesEyebrow}</div>
-            </FadeUp>
-            <FadeUp delay={0.1}>
-              <h2 className="font-display text-ink display-2 text-balance">
-                {siteConfig.servicesHeading}
-              </h2>
-            </FadeUp>
-          </div>
-
-          <StaggerChildren
-            staggerDelay={0.08}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
-          >
-            {siteConfig.services.map((svc) => (
-              <CardTiltLayer key={svc.slug}>
-                <ServiceCard
-                  service={{
-                    name: svc.name,
-                    slug: svc.slug,
-                    description: svc.description,
-                    image: images[`service-${svc.slug}`],
-                  }}
-                />
-              </CardTiltLayer>
-            ))}
-          </StaggerChildren>
-        </div>
-      </section>
+      {/* 4 — SERVICES (sliding cards over hero frames) */}
+      <SlidingCards
+        cards={siteConfig.services.map((svc) => ({
+          slug: svc.slug,
+          name: svc.name,
+          description: svc.description,
+        }))}
+        eyebrow={siteConfig.servicesEyebrow}
+        heading={siteConfig.servicesHeading}
+        framePattern={
+          framesManifest.frameUrlTemplate ||
+          `${framesManifest.frameDir || "/frames"}/frame-{NNNN}.jpg`
+        }
+        frameCount={framesManifest.frameCount}
+        padLength={4}
+      />
 
       {/* 5 — IMAGE MOCKUP / SHOWCASE — scroll-scrubbed hero frames */}
       {framesManifest.frameCount ? (
