@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef, ReactNode } from "react";
+import { motion } from "framer-motion";
+import { ReactNode } from "react";
 
 /**
  * Reveals text word-by-word with stagger when it scrolls into view.
@@ -28,21 +28,20 @@ export default function TextReveal({
   stagger = 0.03,
   once = true,
 }: Props) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once, margin: "-10% 0px -10% 0px" });
   const words = children.split(" ");
 
   const Tag = motion[as] as any;
 
   return (
-    <Tag ref={ref} className={className} aria-label={children}>
+    <Tag className={className} aria-label={children}>
       {words.map((word, i) => (
         <motion.span
           key={`${word}-${i}`}
           aria-hidden
           className="inline-block"
           initial={{ y: 24, opacity: 0 }}
-          animate={inView ? { y: 0, opacity: 1 } : { y: 24, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once, margin: "-10% 0px -10% 0px" }}
           transition={{
             duration: 0.7,
             delay: delay + i * stagger,
