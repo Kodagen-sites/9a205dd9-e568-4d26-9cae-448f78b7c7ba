@@ -245,41 +245,54 @@ export default function HomePage() {
         id="waitlist"
         className="relative section-pad container-x bg-bg overflow-hidden"
       >
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-5 gap-10 lg:gap-16 items-center">
-          <div className="lg:col-span-3 space-y-6">
-            <FadeUp>
-              <div className="eyebrow">{siteConfig.ctaBlock.eyebrow}</div>
-            </FadeUp>
-            <TextReveal
-              as="h2"
-              className="font-display text-ink display-2 text-balance"
-              stagger={0.05}
-            >
-              {siteConfig.ctaBlock.heading}
-            </TextReveal>
-            <FadeUp delay={0.2}>
-              <p className="text-lg text-muted leading-relaxed max-w-xl">
-                {siteConfig.ctaBlock.description}
-              </p>
-            </FadeUp>
-            <FadeUp delay={0.3}>
-              <div className="flex flex-wrap gap-4 pt-2">
-                {siteConfig.trustBar.slice(0, 3).map((item) => (
-                  <span
-                    key={item}
-                    className="px-3 py-1.5 rounded-full border border-hairline-strong text-xs font-mono uppercase tracking-[0.16em] text-eyebrow"
-                  >
-                    {item}
-                  </span>
-                ))}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 -z-0"
+        >
+          <div className="absolute -top-32 -left-24 h-[28rem] w-[28rem] rounded-full bg-accent/25 blur-[120px]" />
+          <div className="absolute -bottom-32 -right-16 h-[26rem] w-[26rem] rounded-full bg-contrast/20 blur-[120px]" />
+        </div>
+        <div className="relative max-w-7xl mx-auto">
+          <div className="rounded-3xl border border-white/15 bg-white/5 backdrop-blur-xl shadow-[0_30px_80px_-40px_rgba(0,0,0,0.55)] p-8 md:p-12 lg:p-16 ring-1 ring-inset ring-white/10">
+            <div className="grid lg:grid-cols-5 gap-10 lg:gap-16 items-center">
+              <div className="lg:col-span-3 space-y-6">
+                <FadeUp>
+                  <div className="eyebrow">{siteConfig.ctaBlock.eyebrow}</div>
+                </FadeUp>
+                <TextReveal
+                  as="h2"
+                  className="font-display text-ink display-2 text-balance"
+                  stagger={0.05}
+                >
+                  {siteConfig.ctaBlock.heading}
+                </TextReveal>
+                <FadeUp delay={0.2}>
+                  <p className="text-lg text-muted leading-relaxed max-w-xl">
+                    {siteConfig.ctaBlock.description}
+                  </p>
+                </FadeUp>
+                <FadeUp delay={0.3}>
+                  <div className="flex flex-wrap gap-4 pt-2">
+                    {siteConfig.trustBar.slice(0, 3).map((item) => (
+                      <span
+                        key={item}
+                        className="px-3 py-1.5 rounded-full border border-white/20 bg-white/5 backdrop-blur text-xs font-mono uppercase tracking-[0.16em] text-eyebrow"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </FadeUp>
               </div>
-            </FadeUp>
-          </div>
 
-          <div className="lg:col-span-2">
-            <FadeUp delay={0.2}>
-              <WaitlistForm note={siteConfig.ctaBlock.formNote} />
-            </FadeUp>
+              <div className="lg:col-span-2">
+                <FadeUp delay={0.2}>
+                  <div className="rounded-2xl border border-white/20 bg-white/10 backdrop-blur-xl p-6 md:p-7 ring-1 ring-inset ring-white/10 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.45)]">
+                    <WaitlistForm note={siteConfig.ctaBlock.formNote} />
+                  </div>
+                </FadeUp>
+              </div>
+            </div>
           </div>
         </div>
       </section>
